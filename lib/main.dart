@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ssa_app/paginas/pantalla_capturarReporte.dart';
+import 'package:ssa_app/paginas/pantalla_reportes.dart';
+import 'paginas/pantalla_usuario.dart';
+import 'paginas/pantalla_inicio.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,17 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      home: MainScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -28,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   final List<Widget> _pages = [
-    _buildPage('Pantalla de Inicio'),
-    _buildPage('Pantalla de Capturar Reporte'),
-    _buildPage('Pantalla de Ver Reportes'),
-    _buildPage('Pantalla de Usuario'),
+    PantallaInicio(),
+    PantallaCapturarReporte(),
+    PantallaVerReportes(),
+    PantallaUsuario(),
   ];
 
   static Widget _buildPage(String text, {IconData? icon}) {
@@ -62,21 +67,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text(
-          'Generador de Reportes',
+          'SSA MÉXICO GENERADOR DE REPORTES',
           style: TextStyle(
             color: Colors.black, // Color del título
             fontSize: 24, // Tamaño del título
             fontWeight: FontWeight.bold, // Negrita
           ),
+          textAlign: TextAlign.center, // Centrar el título
         ),
+        centerTitle: true, // Centrar el título en la AppBar
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           _buildBottomNavItem(Icons.home, 'Inicio'),
           _buildBottomNavItem(Icons.add, 'Capturar Reporte'),
-          _buildBottomNavItem(Icons.description, 'Ver Reportes'),
+          _buildBottomNavItem(Icons.app_registration_rounded, 'Ver Reportes'),
           _buildBottomNavItem(Icons.account_circle, 'Usuario'),
         ],
         currentIndex: _selectedIndex,
