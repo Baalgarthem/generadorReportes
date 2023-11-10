@@ -1,6 +1,6 @@
 # ssa_app
 
-Aplicación multiplataforma generadora de reportes para la empresa SSA MÉXICO
+Aplicación multiplataforma generadora de reportes como proyecto academico de residencia 
 
 ## Getting Started
 
